@@ -4,6 +4,7 @@
  */
 package com.mycompany.mavenproject1;
 
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
@@ -18,9 +19,6 @@ public class FrameLegal extends javax.swing.JFrame {
     public FrameLegal() {
        
         initComponents();
-        NewJPanel njp = new NewJPanel();
-        tab5 = njp;
-        tab5.setVisible(true);
         
     }
 
@@ -67,6 +65,7 @@ public class FrameLegal extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jRadioButton1 = new javax.swing.JRadioButton();
         tab5 = new javax.swing.JPanel();
+        newJPanel3 = new com.mycompany.mavenproject1.NewJPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ANDIFES - SISTEMA");
@@ -84,14 +83,14 @@ public class FrameLegal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(174, 174, 174)
                 .addComponent(jLabel2)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(306, 306, 306)
                 .addComponent(jLabel2)
-                .addContainerGap(489, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Editais", jPanel2);
@@ -106,14 +105,14 @@ public class FrameLegal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(jLabel6)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(489, Short.MAX_VALUE))
+                .addContainerGap(547, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Especialistas", jPanel3);
@@ -254,7 +253,7 @@ public class FrameLegal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(132, 132, 132)
                     .addComponent(jLabel7)
-                    .addContainerGap(153, Short.MAX_VALUE)))
+                    .addContainerGap(374, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +267,7 @@ public class FrameLegal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(174, 174, 174)
                     .addComponent(jLabel7)
-                    .addContainerGap(319, Short.MAX_VALUE)))
+                    .addContainerGap(377, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Parceiros", jPanel1);
@@ -314,7 +313,7 @@ public class FrameLegal extends javax.swing.JFrame {
                             .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jToggleButton1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -349,20 +348,28 @@ public class FrameLegal extends javax.swing.JFrame {
                         .addComponent(jToggleButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 166, Short.MAX_VALUE))))
+                        .addGap(0, 224, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Outra opção do menu", jPanel6);
+
+        newJPanel3.setBackground(new java.awt.Color(204, 255, 204));
 
         javax.swing.GroupLayout tab5Layout = new javax.swing.GroupLayout(tab5);
         tab5.setLayout(tab5Layout);
         tab5Layout.setHorizontalGroup(
             tab5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+            .addGroup(tab5Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(newJPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(328, Short.MAX_VALUE))
         );
         tab5Layout.setVerticalGroup(
             tab5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+            .addGroup(tab5Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(newJPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(358, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab5", tab5);
@@ -457,6 +464,7 @@ public class FrameLegal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTree jTree1;
+    private com.mycompany.mavenproject1.NewJPanel newJPanel3;
     private javax.swing.JPanel tab5;
     // End of variables declaration//GEN-END:variables
 }

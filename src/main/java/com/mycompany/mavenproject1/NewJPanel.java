@@ -26,30 +26,57 @@ public class NewJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        newJPanelLAbelvini = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
-        jLabel1.setText("panel de exemplo");
+        newJPanelLAbelvini.setText("panel de exemplo");
+
+        jButton1.setText("jButton1");
+
+        jToggleButton1.setText("vinicius botao editado atualizado");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jToggleButton1)
+                    .addComponent(newJPanelLAbelvini))
                 .addGap(162, 162, 162))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addComponent(newJPanelLAbelvini)
+                .addGap(18, 18, 18)
+                .addComponent(jToggleButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel newJPanelLAbelvini;
     // End of variables declaration//GEN-END:variables
 }

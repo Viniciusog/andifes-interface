@@ -23,7 +23,7 @@ public class Mavenproject1 {
             System.out.println(ex.getMessage());
         }
         
-        FrameLegal f = new FrameLegal();
+        TelaInicial f = new TelaInicial();
         f.setVisible(true);
     }
 }
