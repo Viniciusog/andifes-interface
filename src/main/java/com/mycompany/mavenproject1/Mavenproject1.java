@@ -23,7 +23,7 @@ public class Mavenproject1 {
             System.out.println(ex.getMessage());
         }
         
-        FrameLegal f = new FrameLegal();
+        Frame f = new Frame();
         f.setVisible(true);
     }
 }
