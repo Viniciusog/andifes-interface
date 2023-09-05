@@ -22,9 +22,10 @@ import java.util.logging.Logger;
  */
 public class OrientacaoDAO {
     
-    protected static Connection con = PostgreSQLConnection.getConnection();
+    
     
     public static void procOrientGrad(Especialista e, AlunoProfessorISF a) {
+        Connection con = PostgreSQLConnection.getConnection();
         Integer idEsp = e.getId();
         Integer idAlunoProfISF = a.getId();
         
@@ -32,11 +33,14 @@ public class OrientacaoDAO {
         try (PreparedStatement stm = con.prepareStatement(sql)) {
             stm.setInt(1, idEsp);
             stm.setInt(2, idAlunoProfISF);
+            stm.executeUpdate();
+            con.close();
         } catch (Exception exc) {
             System.out.println(exc.getMessage());
         }
     }
     
+    // Estou esperando arrumarem essa procedure ainda
     public static void procEditaOrientador(Especialista e) {
         String sql = "CALL procOrientGrad(?,?);";
         
@@ -49,6 +53,7 @@ public class OrientacaoDAO {
     }
     
     public static Especialista getOrientador(Integer idOrientador) {
+        Connection con = PostgreSQLConnection.getConnection();
         String sql = "SELECT * FROM getOrientador(?);";
         MembroAcademico m = new MembroAcademico();
         Especialista e = new Especialista();
@@ -78,13 +83,13 @@ public class OrientacaoDAO {
                 e.setRegistroAutoria(result.getString("RegistroAutoria"));
                 e.setRegistroMinistrante(result.getString("RegistroMinistrante "));
                 
-                m.setNacionalidade(result.getInt("nacionalidade "));
-                m.setIdentidade(result.getInt("identidade "));
-                m.setPaisDeResidencia(result.getInt("pais_de_residencia "));
-                m.setNomeCompleto(result.getInt("nome_completo "));
-                m.setDataNascimento(result.getInt("data_nascimento "));
-                m.setNomeDaMae(result.getInt("nome_da_mae  "));
-                m.setGenero(result.getInt("genero"));
+                m.setNacionalidade(result.getString("MA.nacionalidade"));
+                m.setIdentidade(result.getString("MA.identidade"));
+                m.setPaisDeResidencia(result.getString("MA.pais_de_residencia"));
+                m.setNomeCompleto(result.getString("MA.nome_completo"));
+                m.setDataNascimento(result.getDate("MA.data_nascimento"));
+                m.setNomeDaMae(result.getString("MA.nome_da_mae"));
+                m.setGenero(result.getString("MA.genero"));
                 
                 MembroAcademicoEmail email = new MembroAcademicoEmail();
                 
