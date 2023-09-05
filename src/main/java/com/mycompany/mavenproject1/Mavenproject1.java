@@ -5,6 +5,8 @@
 package com.mycompany.mavenproject1;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import configuration.PostgreSQLConnection;
+import java.sql.Connection;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -16,6 +18,14 @@ public class Mavenproject1 {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        
+        Connection connection = PostgreSQLConnection.getConnection();
+        
+        if (connection == null) {
+            System.out.println("Erro de conexão com PostgreSQL");
+        } else {
+            System.out.println("Conexão realizada com sucesso.");
+        }
         
         try {
             UIManager.setLookAndFeel(new FlatIntelliJLaf());         
