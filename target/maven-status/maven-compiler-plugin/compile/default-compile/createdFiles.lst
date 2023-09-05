@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\mycompany\mavenproject1\Frame$14.class
 com\mycompany\mavenproject1\Frame$8.class
 com\mycompany\mavenproject1\Frame$24.class
@@ -14,6 +15,13 @@ com\mycompany\mavenproject1\Frame$16.class
 com\mycompany\mavenproject1\Frame$26.class
 com\mycompany\mavenproject1\Conta$7.class
 com\mycompany\mavenproject1\Frame$18.class
+=======
+configuration\PostgreSQLConnection.class
+com\mycompany\mavenproject1\NewJPanel.class
+com\mycompany\mavenproject1\FrameLegal.class
+com\mycompany\mavenproject1\FrameLegal$2.class
+com\mycompany\mavenproject1\FrameLegal$4.class
+>>>>>>> 12afc5f396dd76dc97f3bd40f52aebcea80a0a74
 com\mycompany\mavenproject1\Mavenproject1.class
 com\mycompany\mavenproject1\Conta$2.class
 com\mycompany\mavenproject1\Frame$13.class
