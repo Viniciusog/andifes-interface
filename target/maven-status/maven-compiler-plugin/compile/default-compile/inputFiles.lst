@@ -1,15 +1,14 @@
-<<<<<<< HEAD
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\MembroAcademicoEmail.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\configuration\PostgreSQLConnection.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\Orientacao.java
+C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\Conta.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\Mavenproject1.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\Repositorio.java
+C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\Frame.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\ColaboracaoRepositorio.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\ComponenteCurricular.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\AlunoProfessorISF.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\TrilhaOfertada.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\FrameLegal.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\NewJPanel.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\MembroAcademico.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\TrilhaEscolhida.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\MembroAcademicoEndereco.java
@@ -20,9 +19,3 @@ C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\AlunoEspCursaTurmaEsp.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\AlunoEspecializacao.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\Material.java
-=======
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\NewJPanel.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\Conta.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\Mavenproject1.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\Frame.java
->>>>>>> branch-telasmalu
