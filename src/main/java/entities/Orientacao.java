@@ -17,6 +17,7 @@ public class Orientacao {
     private Especialista especialista;
     private Date dataInicial;
     private Date dataFinal;
+    private String status;
     
     public Orientacao() {
         

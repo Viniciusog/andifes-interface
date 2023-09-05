@@ -124,7 +124,7 @@ public class OrientacaoDAO {
     }
     
     //Function getOrientados - dahiwa
-    public static List<Orientacao> getOrientados(Integer idOrientador, Integer idOrientado){
+    /*public static List<Orientacao> getOrientados(Integer idOrientador, Integer idOrientado){
         Connection con = PostgreSQLConnection.getConnection();
         String sql = "SELECT * FROM get_orientados(?,?);";
         List<Orientacao> orientacoes = new ArrayList<>();
@@ -145,6 +145,6 @@ public class OrientacaoDAO {
             System.out.println(exc.getMessage());
         }
         return orientacoes;
-    }
+    }*/
     
 }
