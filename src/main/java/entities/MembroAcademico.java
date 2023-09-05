@@ -4,7 +4,9 @@
  */
 package entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -20,9 +22,11 @@ public class MembroAcademico {
     private Date dataNascimento;
     private String nomeDaMae;
     private String genero;
+    private List<MembroAcademicoTelefone> telefones = new ArrayList<>();
+    private List<MembroAcademicoEndereco> enderecos = new ArrayList<>();
     
     public MembroAcademico() {
-        
+
     }
 
     public MembroAcademico(int id, String identidade, String nacionalidade, String paisDeResidencia, String nomeCompleto, Date dataNascimento, String nomeDaMae, String genero) {
@@ -35,6 +39,40 @@ public class MembroAcademico {
         this.nomeDaMae = nomeDaMae;
         this.genero = genero;
     }
+    
+    public void addEndereco(MembroAcademicoEndereco e) {
+        this.enderecos.add(e);
+    }
+    
+    public void removerEndereco(MembroAcademicoEndereco e) {
+        this.enderecos.remove(e);
+    }
+    
+    public void addTelefone(MembroAcademicoTelefone t) {
+        this.telefones.add(t);
+    }
+    
+    public void removerTelefone(MembroAcademicoTelefone e) {
+        this.telefones.remove(e);
+    }
+
+    public List<MembroAcademicoTelefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<MembroAcademicoTelefone> telefones) {
+        this.telefones = telefones;
+    }
+
+    public List<MembroAcademicoEndereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<MembroAcademicoEndereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+    
+    
 
     public int getId() {
         return id;
