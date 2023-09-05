@@ -208,6 +208,11 @@ public class Conta extends javax.swing.JPanel {
         homeobt2.setBackground(new java.awt.Color(0, 102, 204));
         homeobt2.setForeground(new java.awt.Color(255, 255, 255));
         homeobt2.setText("Home");
+        homeobt2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeobt2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout headerCOLayout = new javax.swing.GroupLayout(headerCO);
         headerCO.setLayout(headerCOLayout);
@@ -577,6 +582,10 @@ public class Conta extends javax.swing.JPanel {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void homeobt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeobt2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeobt2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
