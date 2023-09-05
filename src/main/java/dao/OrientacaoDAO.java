@@ -122,4 +122,29 @@ public class OrientacaoDAO {
         e.setMembroAcademico(m);
         return e;
     }
+    
+    //Function getOrientados - dahiwa
+    public static List<Orientacao> getOrientados(Integer idOrientador, Integer idOrientado){
+        Connection con = PostgreSQLConnection.getConnection();
+        String sql = "SELECT * FROM get_orientados(?,?);";
+        List<Orientacao> orientacoes = new ArrayList<>();
+        
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setInt(1, idOrientador);
+            stm.setInt(2, idOrientado);
+            ResultSet result = stm.executeQuery();
+            while(result.next()){
+                Orientacao o = new Orientacao();
+                o.setEspecialista(result.getInt("orientador_id")); //Deve remeter ao MembroAcademico [ta errado ainda]
+                o.setAlunoProfessorISF(result.getInt("orientado_id")); //Deve remeter ao AlunoProfessorISF [ta errado ainda~]
+                o.setStatus(result.getString("status"));
+                orientacoes.add(o);
+            }
+        
+        }catch (SQLException exc) {
+            System.out.println(exc.getMessage());
+        }
+        return orientacoes;
+    }
+    
 }

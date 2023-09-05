@@ -69,4 +69,13 @@ public class Orientacao {
     public void setDataFinal(Date dataFinal) {
         this.dataFinal = dataFinal;
     } 
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String Status) {
+        this.status = Status;
+    }
+    
 }
