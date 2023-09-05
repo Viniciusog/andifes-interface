@@ -9,6 +9,8 @@ import entities.AlunoProfessorISF;
 import entities.Especialista;
 import entities.MembroAcademico;
 import entities.MembroAcademicoEmail;
+import entities.MembroAcademicoEndereco;
+import entities.MembroAcademicoTelefone;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +43,7 @@ public class OrientacaoDAO {
     }
     
     // Estou esperando arrumarem essa procedure ainda
-    public static void procEditaOrientador(Especialista e) {
+    /*public static void procEditaOrientador(Especialista e) {
         String sql = "CALL procOrientGrad(?,?);";
         
         try (PreparedStatement stm = con.prepareStatement(sql)) {
@@ -50,9 +52,9 @@ public class OrientacaoDAO {
         } catch (Exception exc) {
             System.out.println(exc.getMessage());
         }
-    }
+    }*/
     
-    public static Especialista getOrientador(Integer idOrientador) {
+    public static Especialista getOrientador(int idOrientador) {
         Connection con = PostgreSQLConnection.getConnection();
         String sql = "SELECT * FROM getOrientador(?);";
         MembroAcademico m = new MembroAcademico();
@@ -81,35 +83,43 @@ public class OrientacaoDAO {
                 e.setLinkCnpq(result.getString("LinkCnpq"));
                 e.setPocaFile(result.getString("PocaFile"));
                 e.setRegistroAutoria(result.getString("RegistroAutoria"));
-                e.setRegistroMinistrante(result.getString("RegistroMinistrante "));
+                e.setRegistroMinistrante(result.getString("RegistroMinistrante"));
                 
-                m.setNacionalidade(result.getString("MA.nacionalidade"));
-                m.setIdentidade(result.getString("MA.identidade"));
-                m.setPaisDeResidencia(result.getString("MA.pais_de_residencia"));
-                m.setNomeCompleto(result.getString("MA.nome_completo"));
-                m.setDataNascimento(result.getDate("MA.data_nascimento"));
-                m.setNomeDaMae(result.getString("MA.nome_da_mae"));
-                m.setGenero(result.getString("MA.genero"));
+                m.setNacionalidade(result.getString("nacionalidade"));
+                m.setIdentidade(result.getString("identidade"));
+                m.setPaisDeResidencia(result.getString("pais_de_residencia"));
+                m.setNomeCompleto(result.getString("nome_completo"));
+                m.setDataNascimento(result.getDate("data_nascimento"));
+                m.setNomeDaMae(result.getString("nome_da_mae"));
+                m.setGenero(result.getString("genero"));
                 
                 MembroAcademicoEmail email = new MembroAcademicoEmail();                            
                 email.setValor(result.getString("email"));
                 email.setTipo(result.getString("tipo_email"));
                 
-                m.setId(result.getInt("ddi"));
-                m.setId(result.getInt("ddd"));
-                m.setId(result.getInt("numero"));
-                m.setId(result.getInt("complemento"));
-                m.setId(result.getInt("codigo_postal"));
-                m.setId(result.getInt("pais"));
-                m.setId(result.getInt("estado"));
-                m.setId(result.getInt("cidade"));
-                m.setId(result.getInt("bairro"));
-                m.setId(result.getInt("rua"));
-                m.setId(result.getInt("num_endereco"));
+                m.addEmail(email);
+                
+                MembroAcademicoTelefone telefone = new MembroAcademicoTelefone();
+                telefone.setDdi(result.getString("ddi"));
+                telefone.setDdd(result.getString("ddd"));
+                telefone.setNumero(result.getString("numero"));
+                
+                MembroAcademicoEndereco endereco = new MembroAcademicoEndereco();
+                
+                endereco.setComplemento(result.getString("complemento"));
+                endereco.setCodigoPostal(result.getString("codigo_postal"));
+                endereco.setPais(result.getString("pais"));
+                endereco.setEstado(result.getString("estado"));
+                endereco.setCidade(result.getString("cidade"));
+                endereco.setBairro(result.getString("bairro"));
+                endereco.setRua(result.getString("rua"));
+                endereco.setNumero(result.getInt("num_endereco"));
+                m.addEndereco(endereco);
             }
         } catch (Exception exc) {
             System.out.println(exc.getMessage());
         } 
+        e.setMembroAcademico(m);
         return e;
     }
 }

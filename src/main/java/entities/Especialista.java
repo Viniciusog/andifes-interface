@@ -208,4 +208,11 @@ public class Especialista {
     public void setMembroAcademico(MembroAcademico membroAcademico) {
         this.membroAcademico = membroAcademico;
     }  
+
+    @Override
+    public String toString() {
+        return "Especialista{" + "id=" + id + ", biodata=" + biodata + ", dispoMinitrar=" + dispoMinitrar + ", titulacao=" + titulacao + ", lingua=" + lingua + ", declaracaoProficiencia=" + declaracaoProficiencia + ", dispoOriEsp=" + dispoOriEsp + ", vinculoFile=" + vinculoFile + ", curriculo=" + curriculo + ", dataCredenciamento=" + dataCredenciamento + ", disponibilidadeAutor=" + disponibilidadeAutor + ", papeis=" + papeis + ", resetNeed=" + resetNeed + ", diplomaFile=" + diplomaFile + ", linkCnpq=" + linkCnpq + ", pocaFile=" + pocaFile + ", registroAutoria=" + registroAutoria + ", registroMinistrante=" + registroMinistrante + ", membroAcademico=" + membroAcademico + '}';
+    }
+    
+    
 }
