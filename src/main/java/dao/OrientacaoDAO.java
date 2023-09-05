@@ -91,11 +91,10 @@ public class OrientacaoDAO {
                 m.setNomeDaMae(result.getString("MA.nome_da_mae"));
                 m.setGenero(result.getString("MA.genero"));
                 
-                MembroAcademicoEmail email = new MembroAcademicoEmail();
+                MembroAcademicoEmail email = new MembroAcademicoEmail();                            
+                email.setValor(result.getString("email"));
+                email.setTipo(result.getString("tipo_email"));
                 
-                
-                m.setEm(result.getInt("email"));
-                m.setId(result.getInt("tipo_email"));
                 m.setId(result.getInt("ddi"));
                 m.setId(result.getInt("ddd"));
                 m.setId(result.getInt("numero"));

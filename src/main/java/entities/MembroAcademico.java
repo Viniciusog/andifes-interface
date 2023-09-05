@@ -24,6 +24,7 @@ public class MembroAcademico {
     private String genero;
     private List<MembroAcademicoTelefone> telefones = new ArrayList<>();
     private List<MembroAcademicoEndereco> enderecos = new ArrayList<>();
+    private List<MembroAcademicoEmail> emails = new ArrayList<>();
     
     public MembroAcademico() {
 
@@ -54,6 +55,14 @@ public class MembroAcademico {
     
     public void removerTelefone(MembroAcademicoTelefone e) {
         this.telefones.remove(e);
+    }
+    
+    public void addEmail(MembroAcademicoEmail e) {
+        this.emails.add(e);
+    }
+    
+    public void removerEmail(MembroAcademicoEmail e) {
+        this.emails.remove(e);
     }
 
     public List<MembroAcademicoTelefone> getTelefones() {
