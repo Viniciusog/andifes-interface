@@ -7,17 +7,19 @@ package dao;
 import configuration.PostgreSQLConnection;
 import entities.AlunoProfessorISF;
 import entities.Especialista;
+import entities.Documentos;
 import entities.MembroAcademico;
 import entities.MembroAcademicoEmail;
 import entities.MembroAcademicoEndereco;
 import entities.MembroAcademicoTelefone;
+import entities.AlunoGrad;
+import entities.TabelaAvisosOrientadoPossuiOrientador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -125,7 +127,115 @@ public class OrientacaoDAO {
         return e;
     }
     
-    public static void procEditGenero(Integer id_aluno_professor_isf, String genero) {
+    //Function getOrientados
+    public static List<Orientacao> getOrientados(String nomeOrientador, String nomeOrientado){
+        Connection con = postgresql.getConnection();
+        String sql = "SELECT * FROM get_orientados WHERE (@nomeOrientador IS NULL OR nomeOrientador = @nomeOrientador) AND (@nomeOrientado IS NULL OR nomeOrientado = @nomeOrientado);";
+        List<Orientacao> orientacoes = new ArrayList<>();
+        
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            ResultSet result = stm.executeQuery();
+            while(result.next()){
+                //Caminho a ser percorrido pelo Orientador
+                //orientacao => Especialista => MembroAcademico
+                //Caminho a ser percorrido pelo orientado
+                //orientacao => AlunoProfessor_ISF => MembroAcademico
+                MembroAcademico orientador = new MembroAcademico();
+                MembroAcademico orientado = new MembroAcademico();
+                Especialista especialista = new Especialista();
+                AlunoProfessorISF aluno_prof = new AlunoProfessorISF();
+                Orientacao o = new Orientacao();
+                
+                orientador.setIdentidade(result.getString("idOrientador"));
+                orientador.setNomeCompleto(result.getString("orientador_nome"));
+                orientador.setId(1);
+                orientado.setIdentidade(result.getString("idOrientado"));
+                orientado.setNomeCompleto(result.getString("orientado_nome"));
+                orientado.setId(2);
+                
+                especialista.setId(1);
+                especialista.setMembroAcademico(orientador);
+                
+                aluno_prof.setId(2);
+                aluno_prof.setMembroAcademico(orientado);
+                
+                o.setEspecialista(especialista); 
+                o.setAlunoProfessorISF(aluno_prof); 
+                o.setStatus(result.getString("status"));
+                orientacoes.add(o);
+            }
+        
+        }catch (SQLException exc) {
+            System.out.println(exc.getMessage());
+        }
+        return orientacoes;
+    }
+
+    public static Documentos getDocumentos(String identidade) {
+        Connection con = PostgreSQLConnection.getConnection();
+        Documentos d = new Documentos();
+        String sql = "SELECT * getDocumentos(?);";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+                stm.setString(1, identidade);
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    d.setTitulacao(result.getString("Titulacao"));
+                    d.setProficiencia(result.getString("declaracao_proficiencia"));
+                    d.setNivel(result.getString("nivel_proficiencia"));
+                    d.setDiploma(result.getString("diploma"));
+                    d.setComprov_prof(result.getString("comprovacao_profissional"));
+                    d.setComprov_vinc(result.getString("comprovacao_vinculo"));
+                }
+
+            }catch (SQLException exc) {
+                System.out.println(exc.getMessage());
+            }
+        return d;
+    }
+
+    public static TabelaAvisosOrientadoPossuiOrientador getTabelaAvisos() {
+        Connection con = PostgreSQLConnection.getConnection();
+        TabelaAvisosOrientadoPossuiOrientador t = new TabelaAvisosOrientadoPossuiOrientador();
+        String sql = "SELECT * FROM avisos_orientados;";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    t.setQuando(result.getDate("quando"));
+                    t.setQuem(result.getString("quem"));
+                }
+
+            }catch (SQLException exc) {
+                System.out.println(exc.getMessage());
+            }
+        return t;
+    }
+
+    public static List<AlunoGrad> getGradSemOrientador() {
+        Connection con = PostgreSQLConnection.getConnection();
+        List<AlunoGrad> Alunos = new ArrayList<>();
+        String sql = "SELECT * FROM getGradSemOrientador();";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    AlunoGrad a = new AlunoGrad();
+                    a.setProfessor_isf_id(result.getInt("Professor_isf_id"));
+                    a.setPoca_file(result.getString("Poca_file"));
+                    a.setEdital_Selecao_File(result.getString("Edital_Selecao_File"));
+                    a.setResultado_Selecao_File(result.getString("Resultado_Selecao_File"));
+                    a.setTermo_Turma_Compromisso_File(result.getString("Termo_Turma_Compromisso_File"));
+                    a.setVinculo_File(result.getString("Vinculo_File"));
+                    
+                    
+                    Alunos.add(a);
+                }
+
+            }catch (SQLException exc) {
+                System.out.println(exc.getMessage());
+            }
+        return Alunos;
+    } 
+  
+  public static void procEditGenero(Integer id_aluno_professor_isf, String genero) {
         Connection con = PostgreSQLConnection.getConnection();
         
         String sql = "CALL procEditGenero3(?, ?);";
@@ -160,32 +270,4 @@ public class OrientacaoDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + exc.getMessage());
         }
     }
-
-    
-    // public static void 
-    
-    //Function getOrientados - dahiwa
-    /*public static List<Orientacao> getOrientados(Integer idOrientador, Integer idOrientado){
-        Connection con = PostgreSQLConnection.getConnection();
-        String sql = "SELECT * FROM get_orientados(?,?);";
-        List<Orientacao> orientacoes = new ArrayList<>();
-        
-        try (PreparedStatement stm = con.prepareStatement(sql)) {
-            stm.setInt(1, idOrientador);
-            stm.setInt(2, idOrientado);
-            ResultSet result = stm.executeQuery();
-            while(result.next()){
-                Orientacao o = new Orientacao();
-                o.setEspecialista(result.getInt("orientador_id")); //Deve remeter ao MembroAcademico [ta errado ainda]
-                o.setAlunoProfessorISF(result.getInt("orientado_id")); //Deve remeter ao AlunoProfessorISF [ta errado ainda~]
-                o.setStatus(result.getString("status"));
-                orientacoes.add(o);
-            }
-        
-        }catch (SQLException exc) {
-            System.out.println(exc.getMessage());
-        }
-        return orientacoes;
-    }*/
-    
 }
