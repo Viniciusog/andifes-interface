@@ -120,5 +120,47 @@ public class AlunoEspecializacaoDAO {
             }
         return ae;
     }    
+    //Function GetProfData
+    public static AlunoProfessorISF GetProfData() {
+        Connection con = PostgreSQLConnection.getConnection();
+        AlunoProfessorISF apISF = new AlunoProfessorISF();
+        List<MembroAcademicoTelefone> tel = new ArrayList<>();
+        String sql = "SELECT * FROM GetProfData();";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    
+                    MembroAcademico ma = new MembroAcademico();
+                    MembroAcademicoTelefone mat = new MembroAcademicoTelefone();
+                    MembroAcademicoEmail maEmail = new MembroAcademicoEmail();
+                    
+                    apISF.setId(result.getInt("aluno_professor_id"));
+                    
+                    ma.setNomeCompleto(result.getString("nome_completo"));
+                    ma.setPaisDeResidencia(result.getString("pais_de_residencia"));
+                    ma.setDataNascimento(result.getDate("data_nascimento"));
+                    
+                    mat.setDdi(result.getInt("codigo_pais_telefone"));
+                    mat.setDdd(result.getInt("codigo_area_telefone"));
+                    mat.setNumero(result.getString("numero_telefone"));
+                    
+                    tel.add(mat);
+                    
+                    
+                    maEmail.setTipo(result.getString("tipo"));
+                    maEmail.setValor(result.getString("email"));
+                    email.add(maEmail);
+                    
+                    ma.setTelefones(tel);
+                    ma.addEmail(maEmail);
+                    
+                    apISF.setMembroAcademico(ma);
+                }
+
+            }catch (SQLException exc) {
+                System.out.println(exc.getMessage());
+            }
+        return apISF;
+    }  
     
 }
