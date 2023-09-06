@@ -233,5 +233,41 @@ public class OrientacaoDAO {
                 System.out.println(exc.getMessage());
             }
         return Alunos;
-    }    
+    } 
+  
+  public static void procEditGenero(Integer id_aluno_professor_isf, String genero) {
+        Connection con = PostgreSQLConnection.getConnection();
+        
+        String sql = "CALL procEditGenero3(?, ?);";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setInt(1, id_aluno_professor_isf);
+            stm.setString(2, genero);
+            int n = stm.executeUpdate();
+            System.out.println("n: " + n);
+            JOptionPane.showMessageDialog(null, "Gênero editado com sucesso!");
+            con.close();
+        } catch (Exception exc) {
+            JOptionPane.showMessageDialog(null, exc.getMessage());
+        }
+    }
+    
+    // Ação: 'inserir', 'editar', ou 'excluir'
+    public static void procEditTelefone(Integer id_membro_academico, MembroAcademicoTelefone telefone, String acao) {
+        Connection con = PostgreSQLConnection.getConnection();
+        
+        String sql = "SELECT procEditTelefone(?, ?, ?, ?, ?);";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setInt(1, id_membro_academico);
+            stm.setString(2, telefone.getDdi());
+            stm.setString(3, telefone.getDdd());
+            stm.setString(4, telefone.getNumero());
+            stm.setString(5, acao);
+            
+            stm.executeQuery();
+            JOptionPane.showMessageDialog(null, "Telefone salvo com sucesso!");
+            con.close();
+        } catch (Exception exc) {
+            JOptionPane.showMessageDialog(null, "Erro: " + exc.getMessage());
+        }
+    }
 }
