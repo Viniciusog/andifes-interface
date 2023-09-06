@@ -14,6 +14,7 @@ public class AlunoProfessorISF {
     private Integer id;
     private String ra;
     private MembroAcademico membroAcademico;
+    private String tipo; // Usado ao chamar get_orientados
     
     public AlunoProfessorISF() {
         
@@ -24,6 +25,16 @@ public class AlunoProfessorISF {
         this.ra = ra;
         this.membroAcademico = membroAcademico;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
 
     public Integer getId() {
         return id;

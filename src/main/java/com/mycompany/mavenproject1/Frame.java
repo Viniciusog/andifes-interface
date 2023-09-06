@@ -8,8 +8,12 @@ import dao.OrientacaoDAO;
 import entities.AlunoEspecializacao;
 import entities.Especialista;
 import entities.MembroAcademicoTelefone;
-import java.awt.*;
+import entities.Orientacao;
+import java.awt.CardLayout;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -51,15 +55,12 @@ public class Frame extends javax.swing.JFrame {
         homeobt = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         Orientadoslabel = new javax.swing.JLabel();
         aoobt = new javax.swing.JButton();
         pioobt = new javax.swing.JButton();
         toobt = new javax.swing.JButton();
         mobt = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        txtHomeNomeUsuarioOr = new javax.swing.JLabel();
         piniciala = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         contaabt = new javax.swing.JButton();
@@ -82,8 +83,9 @@ public class Frame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         oriesptabela = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
         origratabela = new javax.swing.JTable();
+        txtOrientadosNomeUsuario = new javax.swing.JLabel();
         contaOrientador = new javax.swing.JScrollPane();
         contaOrientador1 = new javax.swing.JPanel();
         txtOla = new javax.swing.JLabel();
@@ -206,6 +208,8 @@ public class Frame extends javax.swing.JFrame {
 
         Login.setBackground(new java.awt.Color(255, 255, 255));
 
+        entrarbt.setBackground(new java.awt.Color(4, 161, 240));
+        entrarbt.setForeground(new java.awt.Color(255, 255, 255));
         entrarbt.setText("Entrar");
         entrarbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,7 +237,7 @@ public class Frame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 803, Short.MAX_VALUE)
+            .addGap(0, 1173, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,14 +251,16 @@ public class Frame extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(LoginLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Loginlabel)
-                        .addComponent(Senhalabel)
-                        .addComponent(logintxt)
-                        .addComponent(senhatxt)
-                        .addComponent(bemvindolabel, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
-                    .addComponent(entrarbt, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Loginlabel)
+                    .addComponent(Senhalabel)
+                    .addComponent(logintxt)
+                    .addComponent(senhatxt)
+                    .addComponent(bemvindolabel, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(LoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(entrarbt, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LoginLayout.setVerticalGroup(
@@ -271,9 +277,9 @@ public class Frame extends javax.swing.JFrame {
                 .addComponent(Senhalabel)
                 .addGap(8, 8, 8)
                 .addComponent(senhatxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
+                .addGap(20, 20, 20)
                 .addComponent(entrarbt, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(465, Short.MAX_VALUE))
+                .addContainerGap(741, Short.MAX_VALUE))
         );
 
         mainPanel.add(Login, "Login");
@@ -301,7 +307,7 @@ public class Frame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addComponent(homeobt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 984, Short.MAX_VALUE)
                 .addComponent(contaobt, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -312,17 +318,10 @@ public class Frame extends javax.swing.JFrame {
 
         jLabel2.setText("Olá,");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Docente Orientador:");
-
-        jLabel4.setText("jLabel4");
-
-        jLabel5.setText("jLabel5");
-
         Orientadoslabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Orientadoslabel.setText("Orientados:");
+        Orientadoslabel.setText("Menu principal");
 
-        aoobt.setBackground(new java.awt.Color(102, 204, 255));
+        aoobt.setBackground(new java.awt.Color(4, 161, 240));
         aoobt.setForeground(new java.awt.Color(255, 255, 255));
         aoobt.setText("Alunos Orientados");
         aoobt.addActionListener(new java.awt.event.ActionListener() {
@@ -331,19 +330,19 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        pioobt.setBackground(new java.awt.Color(102, 204, 255));
+        pioobt.setBackground(new java.awt.Color(4, 161, 240));
         pioobt.setForeground(new java.awt.Color(255, 255, 255));
         pioobt.setText("Professores ISF Orientados");
 
-        toobt.setBackground(new java.awt.Color(102, 204, 255));
+        toobt.setBackground(new java.awt.Color(4, 161, 240));
         toobt.setForeground(new java.awt.Color(255, 255, 255));
         toobt.setText("Todos Orientadores");
 
-        mobt.setBackground(new java.awt.Color(102, 204, 255));
+        mobt.setBackground(new java.awt.Color(4, 161, 240));
         mobt.setForeground(new java.awt.Color(255, 255, 255));
         mobt.setText("Materiais");
 
-        jLabel9.setText("jLabel9");
+        txtHomeNomeUsuarioOr.setText("jLabel9");
 
         javax.swing.GroupLayout pinicialoLayout = new javax.swing.GroupLayout(pinicialo);
         pinicialo.setLayout(pinicialoLayout);
@@ -353,34 +352,26 @@ public class Frame extends javax.swing.JFrame {
             .addGroup(pinicialoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pinicialoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pinicialoLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator2)
                     .addGroup(pinicialoLayout.createSequentialGroup()
                         .addGroup(pinicialoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2)
                             .addGroup(pinicialoLayout.createSequentialGroup()
-                                .addGroup(pinicialoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pinicialoLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel9))
-                                    .addComponent(jLabel3)
-                                    .addComponent(Orientadoslabel)
-                                    .addGroup(pinicialoLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel5)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinicialoLayout.createSequentialGroup()
-                                .addComponent(aoobt, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                                .addComponent(mobt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                                .addComponent(pioobt)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                                .addComponent(toobt, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtHomeNomeUsuarioOr))
+                            .addComponent(Orientadoslabel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinicialoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(aoobt, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(mobt, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pioobt)
+                .addGap(18, 18, 18)
+                .addComponent(toobt, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pinicialoLayout.setVerticalGroup(
             pinicialoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,24 +380,18 @@ public class Frame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pinicialoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel9))
+                    .addComponent(txtHomeNomeUsuarioOr))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Orientadoslabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pinicialoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aoobt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mobt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pioobt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(toobt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mobt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(560, Short.MAX_VALUE))
+                    .addComponent(toobt, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(883, Short.MAX_VALUE))
         );
 
         mainPanel.add(pinicialo, "pinicialo");
@@ -485,7 +470,7 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(arabt)
                         .addGap(18, 18, 18)
                         .addComponent(mtabt)
-                        .addContainerGap(232, Short.MAX_VALUE))
+                        .addContainerGap(602, Short.MAX_VALUE))
                     .addGroup(pinicialaLayout.createSequentialGroup()
                         .addGroup(pinicialaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1)
@@ -515,7 +500,7 @@ public class Frame extends javax.swing.JFrame {
 
         alunosorientados.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setText("Ola, XXX");
+        jLabel6.setText("Olá,");
 
         barra4.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -542,32 +527,26 @@ public class Frame extends javax.swing.JFrame {
         barra4Layout.setHorizontalGroup(
             barra4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barra4Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(homeobt1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 603, Short.MAX_VALUE)
-                .addComponent(contaobt1)
-                .addGap(18, 18, 18))
+                .addComponent(homeobt1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(contaobt1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         barra4Layout.setVerticalGroup(
             barra4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(barra4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(barra4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contaobt1)
-                    .addComponent(homeobt1))
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(homeobt1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+            .addComponent(contaobt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pesquisartf.setBackground(new java.awt.Color(153, 204, 255));
-        pesquisartf.setForeground(new java.awt.Color(255, 255, 255));
         pesquisartf.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         pesquisartf.setText("  Pesquisar");
 
-        jButton1.setBackground(new java.awt.Color(102, 204, 255));
+        jButton1.setBackground(new java.awt.Color(4, 161, 240));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Nova Orientação Especialização");
 
-        jButton2.setBackground(new java.awt.Color(102, 204, 255));
+        jButton2.setBackground(new java.awt.Color(4, 161, 240));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Nova Orientação Graduando");
 
@@ -577,20 +556,16 @@ public class Frame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Graduando");
 
-        oriesptabela.setBackground(new java.awt.Color(153, 204, 255));
         oriesptabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Orientado", "Nome", "Número", "E-mail", "Ação"
+                "Id", "Identidade", "Nome", "E-mail", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -599,88 +574,89 @@ public class Frame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(oriesptabela);
 
-        origratabela.setBackground(new java.awt.Color(153, 204, 255));
+        origratabela.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         origratabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                { new Integer(1), "123456", "Fernanda Alves", "fer@mail", "ativo"}
             },
             new String [] {
-                "Orientado", "Nome", "Número", "E-mail", "Ação"
+                "Id", "Identidade", "Nome", "E-mail", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(origratabela);
+        origratabela.setPreferredSize(new java.awt.Dimension(375, 30));
+        origratabela.setRowHeight(30);
+        origratabela.setShowGrid(false);
+        jScrollPane4.setViewportView(origratabela);
+
+        txtOrientadosNomeUsuario.setText("jLabel9");
 
         javax.swing.GroupLayout alunosorientadosLayout = new javax.swing.GroupLayout(alunosorientados);
         alunosorientados.setLayout(alunosorientadosLayout);
         alunosorientadosLayout.setHorizontalGroup(
             alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(barra4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(alunosorientadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alunosorientadosLayout.createSequentialGroup()
+                .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(alunosorientadosLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator3))
+                        .addGap(12, 12, 12)
+                        .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(alunosorientadosLayout.createSequentialGroup()
+                                .addComponent(pesquisartf, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1155, Short.MAX_VALUE)
+                            .addGroup(alunosorientadosLayout.createSequentialGroup()
+                                .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(alunosorientadosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator3)))
                 .addContainerGap())
             .addGroup(alunosorientadosLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(alunosorientadosLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(alunosorientadosLayout.createSequentialGroup()
-                        .addComponent(pesquisartf, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(29, 29, 29))
-                    .addGroup(alunosorientadosLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(alunosorientadosLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())
-                    .addGroup(alunosorientadosLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(19, 19, 19)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtOrientadosNomeUsuario)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         alunosorientadosLayout.setVerticalGroup(
             alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(alunosorientadosLayout.createSequentialGroup()
                 .addComponent(barra4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtOrientadosNomeUsuario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(alunosorientadosLayout.createSequentialGroup()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pesquisartf, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(alunosorientadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pesquisartf, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(356, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(581, 581, 581))
         );
 
         mainPanel.add(alunosorientados, "alunosorientados");
@@ -1460,6 +1436,10 @@ public class Frame extends javax.swing.JFrame {
         else{
             CardLayout card = (CardLayout)mainPanel.getLayout();
             card.show(mainPanel, "pinicialo");
+            
+            Especialista e = OrientacaoDAO.getOrientador(1);
+            txtHomeNomeUsuarioOr.setText(e.getMembroAcademico().getNomeCompleto()); 
+            
         }
         
         
@@ -1469,21 +1449,55 @@ public class Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         // TODO add your handling code here:
         CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "pinicialo");
+        card.show(mainPanel, "pinicialo");      
     }//GEN-LAST:event_homeabtActionPerformed
 
     private void aoobtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aoobtActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "alunosorientados");
+        popularTabelaAlunosEsp();
+        txtOrientadosNomeUsuario.setText(txtHomeNomeUsuarioOr.getText());
+        card.show(mainPanel, "alunosorientados");        
     }//GEN-LAST:event_aoobtActionPerformed
 
-    private void homeobt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeobt1ActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "pinicialo");
-    }//GEN-LAST:event_homeobt1ActionPerformed
-
+    private void popularTabelaAlunosEsp() {
+        String nomeUsuarioOr = txtHomeNomeUsuarioOr.getText();
+        System.out.println("Nome do usuário atual: " + nomeUsuarioOr);
+        List<Orientacao> listaDeOrientacoes = OrientacaoDAO.getOrientados(nomeUsuarioOr, null);
+        
+        DefaultTableModel modelEsp = (DefaultTableModel) oriesptabela.getModel();
+        DefaultTableModel modelGra = (DefaultTableModel) origratabela.getModel();
+        
+        for (Orientacao o : listaDeOrientacoes) {
+            System.out.println("Orientação: " + o.getStatus());
+            if (o.getAlunoProfessorISF().getTipo().equals("aluno_esp")) {
+                System.out.println("A");
+                modelEsp.addRow(new Object[]{o.getAlunoProfessorISF().getId(),
+                o.getAlunoProfessorISF().getMembroAcademico().getIdentidade(),
+                o.getAlunoProfessorISF().getMembroAcademico().getNomeCompleto(),
+                o.getAlunoProfessorISF().getMembroAcademico().getEmails().get(0).getValor(),
+                o.getStatus()});
+                
+            } else {
+                System.out.println("B");
+                System.out.println("");
+                System.out.println(o.getAlunoProfessorISF().getId());
+                System.out.println(o.getAlunoProfessorISF().getMembroAcademico().getIdentidade());
+                System.out.println(o.getAlunoProfessorISF().getMembroAcademico().getNomeCompleto());
+                System.out.println(o.getAlunoProfessorISF().getMembroAcademico().getEmails().get(0).getValor());
+                System.out.println(o.getStatus());
+                
+                modelGra.addRow(new Object[]{o.getAlunoProfessorISF().getId(),
+                o.getAlunoProfessorISF().getMembroAcademico().getIdentidade(),
+                o.getAlunoProfessorISF().getMembroAcademico().getNomeCompleto(),
+                o.getAlunoProfessorISF().getMembroAcademico().getEmails().get(0).getValor(),
+                o.getStatus()});
+            }
+        }
+        
+        
+    }   
+    
     private void contaobtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contaobtActionPerformed
         // TODO add your handling code here:
         CardLayout card = (CardLayout)mainPanel.getLayout();
@@ -1536,13 +1550,6 @@ public class Frame extends javax.swing.JFrame {
         edComprovanteIdioma1Or.setText(e.getDeclaracaoProficiencia());
     }
         
-    private void contaobt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contaobt1ActionPerformed
-        // TODO add your handling code here:
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "contaOrientador");
-        
-    }//GEN-LAST:event_contaobt1ActionPerformed
-
     private void edNomeOrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edNomeOrActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edNomeOrActionPerformed
@@ -1649,6 +1656,8 @@ public class Frame extends javax.swing.JFrame {
         String generoOr = cbGeneroOr.getSelectedItem().toString();
         if (!generoOr.equals(atributoEspecialistaOr.getMembroAcademico().getGenero())) {
             OrientacaoDAO.procEditGenero(Integer.parseInt(edIdOr.getText()), generoOr);  
+            atributoEspecialistaOr.getMembroAcademico().setGenero(generoOr);
+
         }
         
         if (!edTelefoneOr.getText().equals(atributoEspecialistaOr.getMembroAcademico().getTelefones().get(0).getTelefoneCompleto())) {
@@ -1667,6 +1676,19 @@ public class Frame extends javax.swing.JFrame {
     private void ccabtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccabtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ccabtActionPerformed
+
+    private void homeobt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeobt1ActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "pinicialo");
+    }//GEN-LAST:event_homeobt1ActionPerformed
+
+    private void contaobt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contaobt1ActionPerformed
+        // TODO add your handling code here:
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "contaOrientador");
+
+    }//GEN-LAST:event_contaobt1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1800,7 +1822,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -1808,7 +1829,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -1819,7 +1839,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
@@ -1837,13 +1856,12 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1863,8 +1881,10 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton pioobt;
     private javax.swing.JPasswordField senhatxt;
     private javax.swing.JButton toobt;
+    private javax.swing.JLabel txtHomeNomeUsuarioOr;
     private javax.swing.JLabel txtNomeUsuarioAEsp;
     private javax.swing.JLabel txtNomeUsuarioOr;
     private javax.swing.JLabel txtOla;
+    private javax.swing.JLabel txtOrientadosNomeUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,13 +13,17 @@ import entities.MembroAcademicoEmail;
 import entities.MembroAcademicoEndereco;
 import entities.MembroAcademicoTelefone;
 import entities.AlunoGrad;
+import entities.Orientacao;
 import entities.TabelaAvisosOrientadoPossuiOrientador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -129,11 +133,13 @@ public class OrientacaoDAO {
     
     //Function getOrientados
     public static List<Orientacao> getOrientados(String nomeOrientador, String nomeOrientado){
-        Connection con = postgresql.getConnection();
-        String sql = "SELECT * FROM get_orientados WHERE (@nomeOrientador IS NULL OR nomeOrientador = @nomeOrientador) AND (@nomeOrientado IS NULL OR nomeOrientado = @nomeOrientado);";
+        Connection con = PostgreSQLConnection.getConnection();
+        String sql = "SELECT * FROM get_orientados(?,?)";
         List<Orientacao> orientacoes = new ArrayList<>();
         
         try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setString(1, nomeOrientador);
+            stm.setString(2, nomeOrientado);
             ResultSet result = stm.executeQuery();
             while(result.next()){
                 //Caminho a ser percorrido pelo Orientador
@@ -146,18 +152,23 @@ public class OrientacaoDAO {
                 AlunoProfessorISF aluno_prof = new AlunoProfessorISF();
                 Orientacao o = new Orientacao();
                 
-                orientador.setIdentidade(result.getString("idOrientador"));
+                orientador.setIdentidade(result.getString("orientador_identidade"));
                 orientador.setNomeCompleto(result.getString("orientador_nome"));
-                orientador.setId(1);
-                orientado.setIdentidade(result.getString("idOrientado"));
-                orientado.setNomeCompleto(result.getString("orientado_nome"));
-                orientado.setId(2);
+                orientador.setId(result.getInt("orientador_id"));
                 
-                especialista.setId(1);
+                orientado.setIdentidade(result.getString("orientado_identidade"));
+                orientado.setNomeCompleto(result.getString("orientado_nome"));
+                orientado.setId(result.getInt("orientado_id"));
+                
+                MembroAcademicoEmail email = new MembroAcademicoEmail(null, null, result.getString("email"), null);
+                orientado.addEmail(email);                     
+                           
+                especialista.setId(orientador.getId());
                 especialista.setMembroAcademico(orientador);
                 
-                aluno_prof.setId(2);
+                aluno_prof.setId(orientado.getId());
                 aluno_prof.setMembroAcademico(orientado);
+                aluno_prof.setTipo(result.getString("tipo")); //aluno_esp ou aluno_grad
                 
                 o.setEspecialista(especialista); 
                 o.setAlunoProfessorISF(aluno_prof); 
