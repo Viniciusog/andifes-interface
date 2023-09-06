@@ -1,21 +1,12 @@
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\MembroAcademicoEmail.java
+<<<<<<< HEAD
+D:\code\pibd\src\main\java\com\mycompany\mavenproject1\NewJPanel.java
+D:\code\pibd\src\main\java\com\mycompany\mavenproject1\Conta.java
+D:\code\pibd\src\main\java\com\mycompany\mavenproject1\pinicialo.java
+D:\code\pibd\src\main\java\com\mycompany\mavenproject1\Frame.java
+D:\code\pibd\src\main\java\com\mycompany\mavenproject1\Mavenproject1.java
+=======
+C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\FrameLegal.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\configuration\PostgreSQLConnection.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\Orientacao.java
+C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\NewJPanel.java
 C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\Mavenproject1.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\Repositorio.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\com\mycompany\mavenproject1\Frame.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\ColaboracaoRepositorio.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\ComponenteCurricular.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\AlunoProfessorISF.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\TrilhaOfertada.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\dao\AlunoEspecializacaoDAO.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\MembroAcademico.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\TrilhaEscolhida.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\MembroAcademicoEndereco.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\dao\OrientacaoDAO.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\Especialista.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\MembroAcademicoTelefone.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\TurmaEspecializacao.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\AlunoEspCursaTurmaEsp.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\AlunoEspecializacao.java
-C:\Users\vinij\OneDrive\Documentos\NetBeansProjects\mavenproject1\src\main\java\entities\Material.java
+>>>>>>> 12afc5f396dd76dc97f3bd40f52aebcea80a0a74
