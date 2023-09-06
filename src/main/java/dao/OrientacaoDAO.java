@@ -7,6 +7,7 @@ package dao;
 import configuration.PostgreSQLConnection;
 import entities.AlunoProfessorISF;
 import entities.Especialista;
+import entities.Documentos;
 import entities.MembroAcademico;
 import entities.MembroAcademicoEmail;
 import entities.MembroAcademicoEndereco;
@@ -165,6 +166,28 @@ public class OrientacaoDAO {
             System.out.println(exc.getMessage());
         }
         return orientacoes;
+    }
+
+    public static Documentos getDocumentos(String identidade) {
+        Connection con = PostgreSQLConnection.getConnection();
+        Documentos d = new Documentos();
+        String sql = "SELECT * getDocumentos(?);";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+                stm.setString(1, identidade);
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    d.setTitulacao(result.getString("Titulacao"));
+                    d.setProficiencia(result.getString("declaracao_proficiencia"));
+                    d.setNivel(result.getString("nivel_proficiencia"));
+                    d.setDiploma(result.getString("diploma"));
+                    d.setComprov_prof(result.getString("comprovacao_profissional"));
+                    d.setComprov_vinc(result.getString("comprovacao_vinculo"));
+                }
+
+            }catch (SQLException exc) {
+                System.out.println(exc.getMessage());
+            }
+        return d;
     }
     
 }
