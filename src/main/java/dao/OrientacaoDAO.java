@@ -123,8 +123,8 @@ public class OrientacaoDAO {
         return e;
     }
     
-    //Function getOrientados - dahiwa
-    /*public static List<Orientacao> getOrientados(Integer idOrientador, Integer idOrientado){
+    //Function getOrientados
+    public static List<Orientacao> getOrientados(Integer idOrientador, Integer idOrientado){
         Connection con = PostgreSQLConnection.getConnection();
         String sql = "SELECT * FROM get_orientados(?,?);";
         List<Orientacao> orientacoes = new ArrayList<>();
@@ -134,9 +134,31 @@ public class OrientacaoDAO {
             stm.setInt(2, idOrientado);
             ResultSet result = stm.executeQuery();
             while(result.next()){
+                //Caminho a ser percorrido pelo Orientador
+                //orientacao => Especialista => MembroAcademico
+                //Caminho a ser percorrido pelo orientado
+                //orientacao => AlunoProfessor_ISF => MembroAcademico
+                MembroAcademico orientador = new MembroAcademico();
+                MembroAcademico orientado = new MembroAcademico();
+                Especialista especialista = new Especialista();
+                AlunoProfessorISF aluno_prof = new AlunoProfessorISF();
                 Orientacao o = new Orientacao();
-                o.setEspecialista(result.getInt("orientador_id")); //Deve remeter ao MembroAcademico [ta errado ainda]
-                o.setAlunoProfessorISF(result.getInt("orientado_id")); //Deve remeter ao AlunoProfessorISF [ta errado ainda~]
+                
+                orientador.setIdentidade(result.getString("idOrientador"));
+                orientador.setNomeCompleto(result.getString("orientador_nome"));
+                orientador.setId(1);
+                orientado.setIdentidade(result.getString("idOrientado"));
+                orientado.setNomeCompleto(result.getString("orientado_nome"));
+                orientado.setId(2);
+                
+                especialista.setId(1);
+                especialista.setMembroAcademico(orientador);
+                
+                aluno_prof.setId(2);
+                aluno_prof.setMembroAcademico(orientado);
+                
+                o.setEspecialista(especialista); 
+                o.setAlunoProfessorISF(aluno_prof); 
                 o.setStatus(result.getString("status"));
                 orientacoes.add(o);
             }
@@ -145,6 +167,6 @@ public class OrientacaoDAO {
             System.out.println(exc.getMessage());
         }
         return orientacoes;
-    }*/
+    }
     
 }
