@@ -12,6 +12,7 @@ import entities.MembroAcademico;
 import entities.MembroAcademicoEmail;
 import entities.MembroAcademicoEndereco;
 import entities.MembroAcademicoTelefone;
+import entities.AlunoGrad;
 import entities.TabelaAvisosOrientadoPossuiOrientador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -207,4 +208,29 @@ public class OrientacaoDAO {
             }
         return t;
     }
+
+    public static List<AlunoGrad> getGradSemOrientador() {
+        Connection con = PostgreSQLConnection.getConnection();
+        List<AlunoGrad> Alunos = new ArrayList<>();
+        String sql = "SELECT * FROM getGradSemOrientador();";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    AlunoGrad a = new AlunoGrad();
+                    a.setProfessor_isf_id(result.getInt("Professor_isf_id"));
+                    a.setPoca_file(result.getString("Poca_file"));
+                    a.setEdital_Selecao_File(result.getString("Edital_Selecao_File"));
+                    a.setResultado_Selecao_File(result.getString("Resultado_Selecao_File"));
+                    a.setTermo_Turma_Compromisso_File(result.getString("Termo_Turma_Compromisso_File"));
+                    a.setVinculo_File(result.getString("Vinculo_File"));
+                    
+                    
+                    Alunos.add(a);
+                }
+
+            }catch (SQLException exc) {
+                System.out.println(exc.getMessage());
+            }
+        return Alunos;
+    }    
 }
