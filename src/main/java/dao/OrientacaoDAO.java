@@ -124,14 +124,12 @@ public class OrientacaoDAO {
     }
     
     //Function getOrientados
-    public static List<Orientacao> getOrientados(Integer idOrientador, Integer idOrientado){
-        Connection con = PostgreSQLConnection.getConnection();
-        String sql = "SELECT * FROM get_orientados(?,?);";
+    public static List<Orientacao> getOrientados(String nomeOrientador, String nomeOrientado){
+        Connection con = postgresql.getConnection();
+        String sql = "SELECT * FROM get_orientados WHERE (@nomeOrientador IS NULL OR nomeOrientador = @nomeOrientador) AND (@nomeOrientado IS NULL OR nomeOrientado = @nomeOrientado);";
         List<Orientacao> orientacoes = new ArrayList<>();
         
         try (PreparedStatement stm = con.prepareStatement(sql)) {
-            stm.setInt(1, idOrientador);
-            stm.setInt(2, idOrientado);
             ResultSet result = stm.executeQuery();
             while(result.next()){
                 //Caminho a ser percorrido pelo Orientador
