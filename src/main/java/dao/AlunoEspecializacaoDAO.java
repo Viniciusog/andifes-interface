@@ -88,4 +88,37 @@ public class AlunoEspecializacaoDAO {
         return aEsp;
         
     }  
+
+    //Function getInfoUnicas(Integer id)
+    public static AlunoEspecializacao getInfoUnicas(Integer id) {
+        Connection con = PostgreSQLConnection.getConnection();
+        AlunoEspecializacao ae = new AlunoEspecializacao();
+        String sql = "SELECT * FROM getInfoUnicas(?);";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+                stm.setInt(1, id);
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    AlunoProfessorISF apISF = new AlunoProfessorISF();
+                    MembroAcademico ma = new MembroAcademico();
+                    
+                    ma.setNomeCompleto(result.getString("nomeCompleto"));
+                    ma.setNacionalidade(result.getString("nacionalidade"));
+                    ma.setIdentidade(result.getString("identidade"));
+                    ma.setNomeDaMae(result.getString("nome_da_mae"));
+                    ma.setDataNascimento(result.getDate("data_nascimento"));
+                    ma.setGenero(result.getString("genero"));
+                    ma.setPaisDeResidencia(result.getString("pais_de_residencia"));
+                    ae.setDataIngresso(result.getDate("DataIngresso"));
+                    ae.setDataConclusao(result.getDate("DataConclusao"));
+                    apISF.setMembroAcademico(ma);
+                    ae.setAlunoProfessorISF(apISF);
+                    
+                }
+
+            }catch (SQLException exc) {
+                System.out.println(exc.getMessage());
+            }
+        return ae;
+    }    
+    
 }
