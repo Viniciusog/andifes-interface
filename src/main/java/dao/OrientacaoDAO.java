@@ -103,6 +103,7 @@ public class OrientacaoDAO {
                 telefone.setDdi(result.getString("ddi"));
                 telefone.setDdd(result.getString("ddd"));
                 telefone.setNumero(result.getString("numero"));
+                m.addTelefone(telefone);
                 
                 MembroAcademicoEndereco endereco = new MembroAcademicoEndereco();
                 

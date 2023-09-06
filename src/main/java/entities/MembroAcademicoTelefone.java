@@ -67,4 +67,8 @@ public class MembroAcademicoTelefone {
     public void setNumero(String numero) {
         this.numero = numero;
     }  
+    
+    public String getTelefoneCompleto() {
+        return this.ddi + "(" + this.ddd + ")" + this.numero;
+    }
 }

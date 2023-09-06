@@ -39,6 +39,7 @@ public class Mavenproject1 {
         }
         
         Frame f = new Frame();
+        f.setSize(1000, 700);
         f.setVisible(true);
     }
 }

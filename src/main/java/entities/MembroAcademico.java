@@ -73,6 +73,16 @@ public class MembroAcademico {
         this.telefones = telefones;
     }
 
+    public List<MembroAcademicoEmail> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<MembroAcademicoEmail> emails) {
+        this.emails = emails;
+    }
+    
+    
+
     public List<MembroAcademicoEndereco> getEnderecos() {
         return enderecos;
     }
