@@ -12,6 +12,7 @@ import entities.MembroAcademico;
 import entities.MembroAcademicoEmail;
 import entities.MembroAcademicoEndereco;
 import entities.MembroAcademicoTelefone;
+import entities.TabelaAvisosOrientadoPossuiOrientador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -189,5 +190,21 @@ public class OrientacaoDAO {
             }
         return d;
     }
-    
+
+    public static TabelaAvisosOrientadoPossuiOrientador getTabelaAvisos() {
+        Connection con = PostgreSQLConnection.getConnection();
+        TabelaAvisosOrientadoPossuiOrientador t = new TabelaAvisosOrientadoPossuiOrientador();
+        String sql = "SELECT * FROM avisos_orientados;";
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    t.setQuando(result.getDate("quando"));
+                    t.setQuem(result.getString("quem"));
+                }
+
+            }catch (SQLException exc) {
+                System.out.println(exc.getMessage());
+            }
+        return t;
+    }
 }
