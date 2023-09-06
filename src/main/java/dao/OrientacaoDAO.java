@@ -270,4 +270,92 @@ public class OrientacaoDAO {
             JOptionPane.showMessageDialog(null, "Erro: " + exc.getMessage());
         }
     }
+
+    public static void procEditaOrientador(
+        String chaveEspecialista,
+        String novo_Biodata,
+        Boolean novo_DispoMinistrar,
+        String novo_Titulacao,
+        String novo_Lingua,
+        String novo_DeclaracaoProficiencia,
+        Boolean novo_DispoOriEsp,
+        String novo_VinculoFile,
+        String novo_Curriculo,
+        Date novo_DataCredenciamento,
+        String novo_DisponibilidadeAutor,
+        String novo_Papeis,
+        Boolean novo_ResetNeed,
+        String novo_DiplomaFile,
+        String novo_LinkCnpq,
+        String novo_PocaFile,
+        String novo_RegistroAutoria,
+        String novo_identidade,
+        String novo_nacionalidade,
+        String novo_pais_de_residencia,
+        String novo_nome_completo,
+        Date novo_data_nascimento,
+        String novo_nome_da_mae,
+        String novo_genero,
+        String novo_email_valor,
+        String novo_email_tipo,
+        String novo_endereco_complemento,
+        String novo_endereco_codigo_postal,
+        String novo_endereco_pais,
+        String novo_endereco_estado,
+        String novo_endereco_cidade,
+        String novo_endereco_bairro,
+        String novo_endereco_rua,
+        int novo_endereco_numero,
+        String novo_telefone_ddi,
+        String novo_telefone_ddd,
+        String novo_telefone_numero) {
+        Connection con = PostgreSQLConnection.getConnection();
+        String sql = "CALL procEditaOrientador(?,?,?,?,?,?,?,?,?,?,?"
+                + "?,?,?,?,?,?,?,?,?,?,?,"
+                + "?,?,?,?,?,?,?,?,?,?,?,"
+                + "?,?,?,?);"; //37
+        try (PreparedStatement stm = con.prepareStatement(sql)) {
+            stm.setString(1, chaveEspecialista);
+            stm.setString(2, novo_Biodata);
+            stm.setBoolean(3, novo_DispoMinistrar);
+            stm.setString(4, novo_Titulacao);
+            stm.setString(5, novo_Lingua);
+            stm.setString(6, novo_DeclaracaoProficiencia);
+            stm.setBoolean(7, novo_DispoOriEsp);
+            stm.setString(8, novo_VinculoFile);
+            stm.setString(9, novo_Curriculo);
+            stm.setDate(10, novo_DataCredenciamento);
+            stm.setString(11, novo_DisponibilidadeAutor);
+            stm.setString(12, novo_Papeis);
+            stm.setBoolean(13, novo_ResetNeed);
+            stm.setString(14, novo_DiplomaFile);
+            stm.setString(15, novo_LinkCnpq);
+            stm.setString(16, novo_PocaFile);
+            stm.setString(17, novo_RegistroAutoria);
+            stm.setString(18, novo_identidade);
+            stm.setString(19, novo_nacionalidade);
+            stm.setString(20, novo_pais_de_residencia);
+            stm.setString(21, novo_nome_completo);
+            stm.setDate(22, novo_data_nascimento);
+            stm.setString(23, novo_nome_da_mae);
+            stm.setString(24, novo_genero);
+            stm.setString(25, novo_email_valor);
+            stm.setString(26, novo_email_tipo);
+            stm.setString(27, novo_endereco_complemento);
+            stm.setString(28, novo_endereco_codigo_postal);
+            stm.setString(29, novo_endereco_pais);
+            stm.setString(30, novo_endereco_estado);
+            stm.setString(31, novo_endereco_cidade);
+            stm.setString(32, novo_endereco_bairro);
+            stm.setString(33, novo_endereco_rua);
+            stm.setInt(34, novo_endereco_numero);
+            stm.setString(35, novo_telefone_ddi);
+            stm.setString(36, novo_telefone_ddd);
+            stm.setString(37, novo_telefone_numero);
+            stm.executeUpdate();
+            con.close();
+        } catch (Exception exc) {
+            System.out.println(exc.getMessage());
+        }
+    }
 }
