@@ -1,5 +1,8 @@
 # andifes-interface
 
+Interface para a Associação Nacional dos Dirigentes das Instituições Federais de Ensino Superior (Andifes), com o objetivo de demonstrar partes do sistema de gerenciamento e divulgação de cursos de idiomas estrangeiros.
+
+
 Participantes na construção das telas:
 
 Vinícius Guimarães <br>
